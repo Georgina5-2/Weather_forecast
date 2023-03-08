@@ -1,0 +1,47 @@
+.dashboard
+{
+    font-size: medium;
+    font-weight: bolder;
+    background-color: rgb(59, 59, 180);
+    background-blend-mode:hard-light;
+    text-align:center;
+    color:whitesmoke;
+    height: 70px;
+    padding-top:1px;
+    margin-top: 25px;
+    margin-left: 20px;
+    margin-right:20px;
+}
+
+.city
+{
+    margin-left:20px;
+    padding-top: 10px;
+}
+
+#readCity
+{
+    padding-top:60px;
+    margin-left: 20px;
+    margin-top: 60px;
+    width:290px;
+    
+    
+}
+
+/* #submitCity
+{
+    margin-left: 20px;
+    width: 290px;
+    height:20px;
+    padding-top: 30px;
+} */
+
+#weatherReportTxt
+{
+    margin-left:100px;
+    padding-top: 80px;
+    width: 700px;
+    height:100px;
+    
+}
