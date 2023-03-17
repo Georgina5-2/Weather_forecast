@@ -1,12 +1,15 @@
-// var geoCodingEndPoint="http://api.openweathermap.org/geo/1.0/";
-// var weatherReportAPIKey="9ad4c63b363b3077fb52384a9c5eb16c";
+var geoCodingEndPoint="http://api.openweathermap.org/geo/1.0/";
+var weatherReportAPIKey="9ad4c63b363b3077fb52384a9c5eb16c";
 // var cityName, stateCode, countryCode;
 // var weatherForecastEndPoint="http://api.openweathermap.org/data/2.5/forecast/lat=";
+function geoCoding(latCoords,lonCoords)
+{
+
+}
 
 
-var btnSubimtCity=$('#submitCity');
 // var weatherReport=$('#weatherReportTxt');
- function getGeoLocation()
+async function getGeoLocation()
 {
     
     var readCityName=$('#readCity').val();
@@ -14,15 +17,59 @@ var btnSubimtCity=$('#submitCity');
     var cityDetails=[];
     cityDetails=readCityName.split(",");
     console.log(cityDetails);
-    var storeCityDetails=localStorage.setItem("cityDetails")
-    var geoCodingParams= "http://geoCodingEndPoint+'direct?q='+readCityName+'&limit=5&appid=9ad4c63b363b3077fb52384a9c5eb16c'";
-    var generateGeoPoints=fetch(geoCodingParams);
-    var geoPointsResponse= Response.json();
+    console.log(typeof cityDetails);
+    var cityName=cityDetails[0];
+    var cityLocation=cityDetails[1].trim();
+    if(!cityLocation.length===2)
+    {
+        alert("Enter the city location in abbreviations");
+    }
+    else
+    {
+        if(cityLocation="")
+        {
+            var geoCodingParams=geoCodingEndPoint+"direct?q="+cityName+"&limit=5&appid="+weatherReportAPIKey;
+        }
+        else
+        {
+            var geoCodingParams=geoCodingEndPoint+"direct?q="+cityName+","+cityLocation+"&limit=5&appid="+weatherReportAPIKey;
+        }
+    }
+    
+    // // var storeCityDetails=localStorage.setItem("cityDetails")
+    // var geoCodingParams= "http://geoCodingEndPoint+'direct?q="+readCityName+"&limit=5&appid=9ad4c63b363b3077fb52384a9c5eb16c";
+    var response= await fetch(geoCodingParams);
+    var geoCodingResponse= await response.json();
     var coordsArray=[];
-    // for(i=0;i<5;i++)
-    // {
-    //     var coordinates=geoResponse[i].lat[i].
-    // }
+    for(i=0;i<5;i++)
+    {
+        var latCoords=geoCodingResponse[i].lat;
+        var lonCoords=geoCodingResponse[i].lon;
+        var country=geoCodingResponse[i].country;
+        var state=geoCodingResponse[i].state;
+        if(cityLocation="")
+        {
+            geoCoding(latCoords,lonCoords);
+        }
+        else
+        {
+            if(Lowercase(state)==lowercase(cityLocation)||lowercase(country)==lowercase(cityLocation))
+            {
+                preferredLatCoords=latCoords;
+                preferredLonCoords=lonCoords;
+                geoCoding(preferredLatCoords,preferredLonCoords);
+            }
+            else
+            {
+                var coordsCollection={"latitude":latCoords,"longitude":lonCoords,"country":country,"state":state};
+                coordsArray.push(coordsCollection);
+            }
+            
+        }
+    }
+    console.log("list of coords:",coordsArray);
+    
 }
-console.log('btnSubimtCity', btnSubimtCity);
-btnSubimtCity.on('click', getGeoLocation);
+
+var btnSubmitCity=$('#submitCity');
+btnSubmitCity.on('click', getGeoLocation);
