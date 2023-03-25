@@ -15,8 +15,10 @@
 
 .city
 {
-    margin-left:20px;
+    margin-left:10px;
     padding-top: 10px;
+    font-weight:bolder;
+    font-size:x-large;
 }
 
 #readCity
@@ -44,4 +46,19 @@
     width: 700px;
     height:100px;
     
+}
+
+
+.currentWeather
+{
+    padding-top: 22px;
+    height:10vh;
+    
+}
+
+.card-label
+{
+    padding-top: 10px;
+    font-weight:bolder;
+    font-size:x-large;
 }
