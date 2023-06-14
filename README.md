@@ -39,3 +39,10 @@ Click on the tab 'Code' and copy the link to the repository
 * The Git folder with the same repository name is created in the present directory
 * Type 'cd (folder name)' and type 'code .' to go to Visual studio code to type the code. 
 
+*This project allows the user to enter a city and get to know the current and 5-day weather forecast of it as shown below
+
+![weather_forecast](https://github.com/Georgina5-2/Weather_forecast/assets/122113060/04745c2e-1c24-4b8f-87ef-abd9ed59fa8c)
+
+# Link to the deployed project
+
+
