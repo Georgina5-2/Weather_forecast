@@ -43,6 +43,8 @@ Click on the tab 'Code' and copy the link to the repository
 
 ![weather_forecast](https://github.com/Georgina5-2/Weather_forecast/assets/122113060/04745c2e-1c24-4b8f-87ef-abd9ed59fa8c)
 
-# Link to the deployed project
+## Link to the deployed project
+
+https://georgina5-2.github.io/Weather_forecast/
 
 
